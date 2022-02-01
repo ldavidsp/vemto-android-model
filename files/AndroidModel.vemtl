@@ -4,6 +4,10 @@ package <$ this.packageAndroid $>
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 <% } %>
+<% if(this.serialized) {%>
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+<% } %>
 
 <# TEMPLATE VARIABLES #>
 <% let modelName = this.model.name.case('pascalCase') %>
