@@ -1,0 +1,18 @@
+{
+    "version": "1.0.0",
+    "id": "com.homeflowapp.android-model",
+    "name": "android-model",
+    "title": "Vemto Android Model",
+    "description": "Vemto Android Model plugin to generate models from Laravel to Android Kotlin.",
+    "image": "",
+    "main": "src/main.js",
+    "vueComponent": "dist/android-model.umd.min.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ldavidsp/vemto-android-model"
+    },
+    "minVemtoVersion": "1.0.0",
+    "scripts": {
+        "build": "vue build ./src/Component.vue -t lib"
+    }
+}
