@@ -118,14 +118,29 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: /usr/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"025c84ce-vue-loader-template"}!/usr/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/usr/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js??ref--1-0!/usr/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib??vue-loader-options!./src/Component.vue?vue&type=template&id=bfe7d53a&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"w-full"},[_vm._m(0),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.packageAndroid),expression:"packageAndroid"}],staticClass:"input",attrs:{"type":"text","id":"package"},domProps:{"value":(_vm.packageAndroid)},on:{"input":function($event){if($event.target.composing){ return; }_vm.packageAndroid=$event.target.value}}}),_c('button',{staticClass:"button-primary mt-5",on:{"click":_vm.save}},[_vm._v("Save")])])}
+// CONCATENATED MODULE: /usr/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"025c84ce-vue-loader-template"}!/usr/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/usr/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js??ref--1-0!/usr/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib??vue-loader-options!./src/Component.vue?vue&type=template&id=0d018990&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"w-full"},[_vm._m(0),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.packageAndroid),expression:"packageAndroid"}],staticClass:"input",attrs:{"type":"text","id":"package"},domProps:{"value":(_vm.packageAndroid)},on:{"input":function($event){if($event.target.composing){ return; }_vm.packageAndroid=$event.target.value}}}),_c('div',{staticClass:"mt-4"},[_c('label',{staticClass:"inline-flex items-center"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.serialized),expression:"serialized"}],staticClass:"form-checkbox",attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.serialized)?_vm._i(_vm.serialized,null)>-1:(_vm.serialized)},on:{"change":[function($event){var $$a=_vm.serialized,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.serialized=$$a.concat([$$v]))}else{$$i>-1&&(_vm.serialized=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.serialized=$$c}},_vm.save]}}),_c('span',{staticClass:"ml-2"},[_vm._v("Activate Serialized Name")])])]),_c('div',{staticClass:"mt-4"},[_c('label',{staticClass:"inline-flex items-center"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.roomDB),expression:"roomDB"}],staticClass:"form-checkbox",attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.roomDB)?_vm._i(_vm.roomDB,null)>-1:(_vm.roomDB)},on:{"change":[function($event){var $$a=_vm.roomDB,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.roomDB=$$a.concat([$$v]))}else{$$i>-1&&(_vm.roomDB=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.roomDB=$$c}},_vm.save]}}),_c('span',{staticClass:"ml-2"},[_vm._v("Activate Room Database")])])]),_c('button',{staticClass:"button-primary mt-5",on:{"click":_vm.save}},[_vm._v("Save")])])}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{attrs:{"for":"package"}},[_vm._v("Please insert in "),_c('code',{staticClass:"text-rose-700"},[_vm._v("package")]),_vm._v(" name")])}]
 
 
-// CONCATENATED MODULE: ./src/Component.vue?vue&type=template&id=bfe7d53a&
+// CONCATENATED MODULE: ./src/Component.vue?vue&type=template&id=0d018990&
 
 // CONCATENATED MODULE: /usr/lib/node_modules/@vue/cli-service-global/node_modules/thread-loader/dist/cjs.js!/usr/lib/node_modules/@vue/cli-service-global/node_modules/babel-loader/lib??ref--13-1!/usr/lib/node_modules/@vue/cli-service-global/node_modules/cache-loader/dist/cjs.js??ref--1-0!/usr/lib/node_modules/@vue/cli-service-global/node_modules/vue-loader/lib??vue-loader-options!./src/Component.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -138,17 +153,23 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
   data: function data() {
     return {
       packageAndroid: '',
+      roomDB: false,
+      serialized: false,
       pluginData: {}
     };
   },
   created: function created() {
     this.pluginData = window.vemtoApi.getPluginData();
     this.packageAndroid = this.pluginData.packageAndroid;
+    this.roomDB = this.pluginData.roomDB;
+    this.serialized = this.pluginData.serialized;
   },
   methods: {
     save: function save() {
       window.vemtoApi.savePluginData({
-        packageAndroid: this.packageAndroid
+        packageAndroid: this.packageAndroid,
+        roomDB: this.roomDB,
+        serialized: this.serialized
       });
     }
   }

@@ -1,7 +1,9 @@
 package <$ this.packageAndroid $>
 
+<% if(this.roomDB) {%>
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+<% } %>
 
 <# TEMPLATE VARIABLES #>
 <% let modelName = this.model.name.case('pascalCase') %>
@@ -16,26 +18,40 @@ import androidx.room.PrimaryKey
 *
 * @constructor Create <$ modelName $> model
 */
+<% if(this.roomDB) {%>
 @Entity(tableName = "<$ this.model.table $>")
+<% } %>
 data class <$ modelName $>(
+  <% if(this.roomDB) {%>
   @PrimaryKey(autoGenerate = true)
   @SerializedName("id") @Expose var id: Int = 0,
+  <% } %>
   <% for (let field of this.model.fillableFields()) { %>
   <% if(!field.isPrimaryKey()) { %>
   <% if(field.type == 'integer' || field.type == 'unsignedBigInteger') {%>
-  @SerializedName("<$ field.name $>") @Expose var <$ field.name $>: Int? = null,
+  <% if(this.serialized) {%>
+  @SerializedName("<$ field.name $>") @Expose
+  <% } %> var <$ field.name $>: Int? = null,
   <% }%>
   <% if(field.type == 'decimal') {%>
-  @SerializedName("<$ field.name $>") @Expose var <$ field.name $>: Double? = null,
+  <% if(this.serialized) {%>
+  @SerializedName("<$ field.name $>") @Expose
+  <% } %> var <$ field.name $>: Double? = null,
   <% }%>
   <% if(field.type == 'string' || field.type == 'text') {%>
-  @SerializedName("<$ field.name $>") @Expose var <$ field.name $>: String? = null,
+  <% if(this.serialized) {%>
+  @SerializedName("<$ field.name $>") @Expose
+  <% } %> var <$ field.name $>: String? = null,
   <% }%>
   <% if(field.type == 'boolean') {%>
-  @SerializedName("<$ field.name $>") @Expose var <$ field.name $>: Boolean? = null,
+  <% if(this.serialized) {%>
+  @SerializedName("<$ field.name $>") @Expose
+  <% } %> var <$ field.name $>: Boolean? = null,
   <% }%>
   <% if(field.type == 'date' || field.type == 'dateTime') {%>
-  @SerializedName("<$ field.name $>") @Expose var <$ field.name $>: String? = null,
+  <% if(this.serialized) {%>
+  @SerializedName("<$ field.name $>") @Expose
+  <% } %> var <$ field.name $>: String? = null,
   <% }%>
   <% } %>
   <% } %>

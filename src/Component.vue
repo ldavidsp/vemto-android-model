@@ -2,6 +2,21 @@
   <div class="w-full">
     <label for="package">Please insert in <code class="text-rose-700">package</code> name</label>
     <input class="input" type="text" id="package" v-model="packageAndroid"/>
+
+    <div class="mt-4">
+      <label class="inline-flex items-center">
+        <input type="checkbox" class="form-checkbox" v-model="serialized" @change="save">
+        <span class="ml-2">Activate Serialized Name</span>
+      </label>
+    </div>
+
+    <div class="mt-4">
+      <label class="inline-flex items-center">
+        <input type="checkbox" class="form-checkbox" v-model="roomDB" @change="save">
+        <span class="ml-2">Activate Room Database</span>
+      </label>
+    </div>
+
     <button class="button-primary mt-5" @click="save">Save</button>
   </div>
 </template>
@@ -11,6 +26,8 @@ export default {
   data () {
     return {
       packageAndroid: '',
+      roomDB: false,
+      serialized: false,
       pluginData: {},
     }
   },
@@ -18,12 +35,16 @@ export default {
   created () {
     this.pluginData = window.vemtoApi.getPluginData()
     this.packageAndroid = this.pluginData.packageAndroid
+    this.roomDB = this.pluginData.roomDB
+    this.serialized = this.pluginData.serialized
   },
 
   methods: {
     save () {
       window.vemtoApi.savePluginData({
-        packageAndroid: this.packageAndroid
+        packageAndroid: this.packageAndroid,
+        roomDB: this.roomDB,
+        serialized: this.serialized,
       })
     }
   }
