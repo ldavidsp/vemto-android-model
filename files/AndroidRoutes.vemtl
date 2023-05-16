@@ -18,7 +18,7 @@ class <$ modelName $>Routes {
    *
    * @return String
    */
-  fun getAll<$ modelName $>s() = routes.plus(ApiHelper.get<$ modelName $>AllUrl)
+  fun getList<$ modelName $>s() = routes.plus(ApiHelper.get<$ modelName $>ListUrl)
 
   /**
    * Create.

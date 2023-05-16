@@ -20,9 +20,9 @@ class <$ modelName $>Services {
   /**
    * Get
    */
-  fun getAll<$ modelName $>s() {
+  fun getList<$ modelName $>s() {
     CoroutineScope(IO).launch {
-      val <$ modelName.toLowerCase() $>s = <$ modelName $>Repository().getAll<$ modelName $>s(1)
+      val <$ modelName.toLowerCase() $>s = <$ modelName $>Repository().getList<$ modelName $>s(1)
       CoroutineScope(Main).launch {}
     }
   }

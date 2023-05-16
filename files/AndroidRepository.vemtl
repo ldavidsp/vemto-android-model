@@ -28,8 +28,8 @@ class <$ modelName $>Repository {
    * @param <$ modelName.toLowerCase() $>Id Int
    * @return <$ modelName $>Response
    */
-  suspend fun getAll<$ modelName $>s(<$ modelName.toLowerCase() $>Id: Int): <$ modelName $>Response {
-    val response: HttpResponse = api.get(<$ modelName.toLowerCase() $>Routes.getAll<$ modelName $>()) {
+  suspend fun getList<$ modelName $>s(<$ modelName.toLowerCase() $>Id: Int): <$ modelName $>Response {
+    val response: HttpResponse = api.get(<$ modelName.toLowerCase() $>Routes.getList<$ modelName $>s()) {
       url {
         parameter(ApiHelper.<$ modelName.toLowerCase() $>_id, <$ modelName.toLowerCase() $>Id)
       }
