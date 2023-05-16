@@ -1,0 +1,61 @@
+package <$ this.packageAndroid $>.app
+
+import android.annotation.SuppressLint
+import android.content.Context
+import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
+import io.ktor.client.HttpClient
+import <$ this.packageAndroid $>.HFKtorHttpClient
+
+/**
+ * Initialize Ktor.
+ */
+val api: HttpClient by lazy {
+  AndroidApp.api!!
+}
+
+/**
+ * Routes Ktor.
+ */
+val routes: String by lazy {
+  AndroidApp.routes!!
+}
+
+/**
+ * Lottery app
+ *
+ * @constructor
+ */
+class AndroidApp : MultiDexApplication() {
+
+  /**
+   * On create.
+   */
+  override fun onCreate() {
+    api = HFKtorHttpClient().getHttpClient()
+    routes = HFKtorHttpClient().getApiUrl()
+
+    super.onCreate()
+  }
+
+  /**
+   * Attach base context.
+   *
+   * @param base Context
+   */
+  override fun attachBaseContext(base: Context) {
+    super.attachBaseContext(base)
+    MultiDex.install(this@AndroidApp)
+  }
+
+  /**
+   * Companion
+   *
+   * @constructor Create empty Companion
+   */
+  companion object {
+    var api: HttpClient? = null
+    var routes: String? = null
+  }
+}
+

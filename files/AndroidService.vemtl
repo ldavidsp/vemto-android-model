@@ -1,0 +1,61 @@
+package <$ this.packageAndroid $>.services
+
+<# TEMPLATE VARIABLES #>
+<% let modelName = this.model.name %>
+
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import <$ this.packageAndroid $>.entity.<$ modelName $>Entity
+import <$ this.packageAndroid $>.repositories.<$ modelName $>Repository
+
+/**
+ * Homeflow Technologies | <$ modelName $>Services.
+ *
+ * @constructor
+ */
+class <$ modelName $>Services {
+
+  /**
+   * Get
+   */
+  fun getAll<$ modelName $>s() {
+    CoroutineScope(IO).launch {
+      val <$ modelName.toLowerCase() $>s = <$ modelName $>Repository().getAll<$ modelName $>s(1)
+      CoroutineScope(Main).launch {}
+    }
+  }
+
+  /**
+   * Create.
+   */
+  fun create(<$ modelName.toLowerCase() $>Entity: <$ modelName $>Entity) {
+    CoroutineScope(IO).launch {
+      val <$ modelName.toLowerCase() $> = <$ modelName $>Repository().create(<$ modelName.toLowerCase() $>Entity)
+      CoroutineScope(Main).launch {}
+    }
+  }
+
+  /**
+   * Update
+   */
+  fun update(<$ modelName.toLowerCase() $>Entity: <$ modelName $>Entity) {
+    CoroutineScope(IO).launch {
+      val <$ modelName.toLowerCase() $> = <$ modelName $>Repository().update(<$ modelName.toLowerCase() $>Entity)
+      CoroutineScope(Main).launch {}
+    }
+  }
+
+  /**
+   * Delete
+   */
+  fun delete(<$ modelName.toLowerCase() $>Id: Int) {
+    CoroutineScope(IO).launch {
+      val <$ modelName.toLowerCase() $> = <$ modelName $>Repository().delete(<$ modelName.toLowerCase() $>Id)
+      CoroutineScope(Main).launch {}
+    }
+  }
+
+}
+
