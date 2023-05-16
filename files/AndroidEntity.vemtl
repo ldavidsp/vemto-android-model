@@ -39,7 +39,7 @@ data class <$ modelName $>Entity(
   <% if(field.type == 'boolean') {%>
   var <$ field.name $>: Boolean?,
   <% }%>
-  <% if(field.type == 'date' || field.type == 'dateTime') {%>
+  <% if(field.type == 'date' || field.type == 'dateTime' || field.type == 'time') {%>
   var <$ field.name $>: String?,
   <% }%>
   <% } %>
