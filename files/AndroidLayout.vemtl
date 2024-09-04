@@ -82,7 +82,6 @@
           android:layout_height="54dp"
           android:layout_marginBottom="12dp"
           android:background="@drawable/abc_input_rounded_login"
-          android:digits="0123456789."
           android:fontFamily="@font/googlesans_bold"
           android:inputType="phone"
           android:paddingStart="16dp"
