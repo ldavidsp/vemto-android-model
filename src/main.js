@@ -1,5 +1,7 @@
 module.exports = (vemto) => {
   return {
+    crudRepository: [],
+
     canInstall() {
       return true
     },
@@ -7,18 +9,22 @@ module.exports = (vemto) => {
     onInstall() {
       vemto.savePluginData({
         packageAndroid: 'com.example',
-        roomDB: false
+        roomDB: false,
       })
     },
 
     beforeCodeGenerationEnd() {
-      let pluginData = vemto.getPluginData(), models = vemto.getProjectModels()
+      let pluginData = vemto.getPluginData(),
+          models = vemto.getProjectModels(),
+          projectCruds = vemto.getProject().getMainCruds()
+
       let roomDB = pluginData.roomDB
       let packageAndroid = pluginData.packageAndroid
       let apiHelperUrls = []
 
       let apiPath = 'api'
       let appPath = 'app'
+      let layoutPath = 'layouts'
       let routePath = 'routes'
       let entityPath = 'entity'
       let responsesPath = 'responses'
@@ -26,7 +32,7 @@ module.exports = (vemto) => {
       let repositoriesPath = 'repositories'
       let servicesPath = 'services'
 
-      vemto.log.warning(`Generate Android MVVM`)
+      vemto.log.warning(`Generate Android MVVM Architecture for ${models.length} models`)
       let basePath = 'app/Android', options = { formatAs: 'kt', data: {} }
       //const apiHelperUrls = []
 
@@ -55,6 +61,16 @@ module.exports = (vemto) => {
         })
       })
 
+      projectCruds.forEach(crud => {
+        const name = crud.name;
+        options.data = {
+          crud,
+          name,
+        }
+
+        vemto.renderTemplate('files/AndroidLayout.vemtl', `${basePath}/${layoutPath}/${crud.url.replace(/-/g, "_")}_layout.xml`, options)
+      })
+
       /**
        * Generate Api urls.
        */
@@ -66,5 +82,6 @@ module.exports = (vemto) => {
       vemto.renderTemplate('files/AndroidApiHelper.vemtl', `${basePath}/${helperPath}/ApiHelper.kt`, options)
       vemto.renderTemplate('files/AndroidGradle.vemtl', `${basePath}/build.gradle.kts`)
     },
+
   }
 }
