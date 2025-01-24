@@ -1,0 +1,45 @@
+package <$ this.packageAndroid $>.routes
+
+<# TEMPLATE VARIABLES #>
+<% let modelName = this.model.name %>
+
+import <$ this.packageAndroid $>.helpers.ApiHelper
+import <$ this.packageAndroid $>.app.routes
+
+/**
+ * Homeflow Technologies | <$ modelName $>Routes.
+ *
+ * @constructor Create empty <$ modelName.toLowerCase() $> routes
+ */
+class <$ modelName $>Routes {
+
+  /**
+   * Get <$ modelName.toLowerCase() $>s.
+   *
+   * @return String
+   */
+  fun getList<$ modelName $>s() = routes.plus(ApiHelper.get<$ modelName $>ListUrl)
+
+  /**
+   * Create.
+   *
+   * @return String
+   */
+  fun create() = routes.plus(ApiHelper.create<$ modelName $>Url)
+
+  /**
+   * Update.
+   *
+   * @return String
+   */
+  fun update() = routes.plus(ApiHelper.update<$ modelName $>Url)
+
+  /**
+   * Delete.
+   *
+   * @return String
+   */
+  fun delete() = routes.plus(ApiHelper.delete<$ modelName $>Url)
+
+}
+

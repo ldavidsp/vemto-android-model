@@ -1,0 +1,19 @@
+package <$ this.packageAndroid $>.entity.responses
+
+<# TEMPLATE VARIABLES #>
+<% let modelName = this.model.name %>
+
+import kotlinx.serialization.Serializable
+
+/**
+ * Homeflow Technologies | <$ modelName $>DeleteResponse.
+ *
+ * @param status Int?
+ * @param message String?
+ * @constructor
+ */
+@Serializable
+data class <$ modelName $>DeleteResponse(
+  var status: Int?,
+  var message: String?,
+)

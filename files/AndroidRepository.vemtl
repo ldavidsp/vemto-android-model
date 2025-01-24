@@ -1,0 +1,83 @@
+package <$ this.packageAndroid $>.repositories
+
+<# TEMPLATE VARIABLES #>
+<% let modelName = this.model.name %>
+import io.ktor.client.call.body
+import io.ktor.client.request.delete
+import io.ktor.client.request.get
+import io.ktor.client.request.parameter
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.client.statement.HttpResponse
+import <$ this.packageAndroid $>.routes.<$ modelName $>Routes
+import <$ this.packageAndroid $>.entity.<$ modelName $>Entity
+import <$ this.packageAndroid $>.entity.responses.<$ modelName $>Response
+import <$ this.packageAndroid $>.entity.responses.<$ modelName $>DeleteResponse
+
+/**
+ * Homeflow Technologies | <$ modelName $>Repository.
+ *
+ * @constructor
+ */
+class <$ modelName $>Repository {
+  private val <$ modelName.toLowerCase() $>Routes = <$ modelName $>Routes()
+
+  /**
+   * Get all <$ modelName $>.
+   *
+   * @param <$ modelName.toLowerCase() $>Id Int
+   * @return <$ modelName $>Response
+   */
+  suspend fun getList<$ modelName $>s(<$ modelName.toLowerCase() $>Id: Int): <$ modelName $>Response {
+    val response: HttpResponse = api.get(<$ modelName.toLowerCase() $>Routes.getList<$ modelName $>s()) {
+      url {
+        parameter(ApiHelper.<$ modelName.toLowerCase() $>_id, <$ modelName.toLowerCase() $>Id)
+      }
+    }
+
+    return response.body<<$ modelName $>Response>()
+  }
+
+  /**
+   * Create.
+   *
+   * @param <$ modelName.toLowerCase() $>Entity <$ modelName $>Entity
+   * @return <$ modelName $>Response
+   */
+  suspend fun create(<$ modelName.toLowerCase() $>Entity: <$ modelName $>Entity): <$ modelName $>Response {
+    val response: HttpResponse = api.post(<$ modelName.toLowerCase() $>Routes.create()) {
+      setBody(<$ modelName.toLowerCase() $>Entity)
+    }
+
+    return response.body<<$ modelName $>Response>()
+  }
+
+  /**
+   * Update.
+   *
+   * @param <$ modelName.toLowerCase() $>Entity <$ modelName $>Entity
+   * @return <$ modelName $>Response
+   */
+   suspend fun update(<$ modelName.toLowerCase() $>Entity: <$ modelName $>Entity): <$ modelName $>Response {
+     val response: HttpResponse = api.put(<$ modelName.toLowerCase() $>Routes.update()) {
+       setBody(<$ modelName.toLowerCase() $>Entity)
+     }
+
+     return response.body<<$ modelName $>Response>()
+   }
+
+  /**
+   * Delete.
+   *
+   * @param <$ modelName.toLowerCase() $>Id Int
+   * @return <$ modelName $>DeleteResponse
+   */
+  suspend fun delete(<$ modelName.toLowerCase() $>Id: Int): <$ modelName $>DeleteResponse {
+    val response: HttpResponse = api.delete(<$ modelName.toLowerCase() $>Routes.delete()) {
+      parameter(ApiHelper.<$ modelName.toLowerCase() $>_id, <$ modelName.toLowerCase() $>Id)
+    }
+
+    return response.body<<$ modelName $>DeleteResponse>()
+  }
+}
+

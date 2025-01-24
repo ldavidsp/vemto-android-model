@@ -1,0 +1,23 @@
+package <$ this.packageAndroid $>.entity.responses
+
+<# TEMPLATE VARIABLES #>
+<% let modelName = this.model.name %>
+
+import <$ this.packageAndroid $>.entity.<$ modelName $>Entity
+import kotlinx.serialization.Serializable
+
+/**
+ * Homeflow Technologies | <$ modelName $>Response.
+ *
+ * @param status Int?
+ * @param message String?
+ * @param data MutableList<<$ modelName $>Entity?>?
+ * @constructor
+ */
+@Serializable
+data class <$ modelName $>Response(
+  var status: Int?,
+  var message: String?,
+  var data: MutableList<<$ modelName $>Entity?>?,
+)
+

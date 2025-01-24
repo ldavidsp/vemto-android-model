@@ -27,24 +27,23 @@ export default {
     return {
       packageAndroid: '',
       roomDB: false,
-      serialized: false,
-      pluginData: {},
+      pluginData: [],
+      vemtoProject: {},
     }
   },
 
   created () {
+    this.vemtoProject = window.vemtoApi.getProject()
     this.pluginData = window.vemtoApi.getPluginData()
     this.packageAndroid = this.pluginData.packageAndroid
     this.roomDB = this.pluginData.roomDB
-    this.serialized = this.pluginData.serialized
   },
 
   methods: {
-    save () {
+    save() {
       window.vemtoApi.savePluginData({
         packageAndroid: this.packageAndroid,
-        roomDB: this.roomDB,
-        serialized: this.serialized,
+        roomDB: this.roomDB
       })
     }
   }

@@ -1,0 +1,47 @@
+package <$ this.packageAndroid $>.entity
+
+<% if(this.roomDB) {%>
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+<% } %>
+import kotlinx.serialization.Serializable
+
+<# TEMPLATE VARIABLES #>
+<% let modelName = this.model.name.case('pascalCase') %>
+<####>
+/**
+* Homeflow Technologies | <$ modelName $>Entity.
+*
+* @property id
+<% for (let field of this.model.fillableFields()) { %>
+* @property <$ field.name $>
+<% } %>
+*
+* @constructor Create <$ modelName.toLowerCase() $> entity.
+*/
+<% if(this.roomDB) {%>
+@Entity(tableName = "<$ this.model.table $>")
+<% } %>
+@Serializable
+data class <$ modelName $>Entity(
+<% if(this.roomDB) {%>@PrimaryKey(autoGenerate = true) @SerializedName("id") @Expose var id: Int = 0,<% } %>
+<% for (let field of this.model.fillableFields()) { %>
+<% if(!field.isPrimaryKey()) { %>
+  <% if(field.type == 'integer' || field.type == 'unsignedBigInteger') {%>
+  var <$ field.name $>: Int?,
+  <% }%>
+  <% if(field.type == 'decimal') {%>
+  var <$ field.name $>: Double?,
+  <% }%>
+  <% if(field.type == 'string' || field.type == 'text') {%>
+  var <$ field.name $>: String?,
+  <% }%>
+  <% if(field.type == 'boolean') {%>
+  var <$ field.name $>: Boolean?,
+  <% }%>
+  <% if(field.type == 'date' || field.type == 'dateTime' || field.type == 'time') {%>
+  var <$ field.name $>: String?,
+  <% }%>
+  <% } %>
+  <% } %>
+)

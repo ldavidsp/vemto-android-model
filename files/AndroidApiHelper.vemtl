@@ -1,0 +1,29 @@
+package <$ this.packageAndroid $>.helpers
+
+<# TEMPLATE VARIABLES #>
+/**
+ * Homeflow Technologies | ApiHelper.
+ *
+ * @constructor Create empty api helper.
+ */
+object ApiHelper {
+
+  /** Build Type */
+  const val debug: String = "debug"
+  const val release: String = "release"
+
+  /** Server Api */
+  const val localUrl: String = "http://192.168.0.1:8080/"
+  const val prodUrl: String = "https://example.com/"
+  const val apiVersion: String = "api/v1/"
+
+  <% for (let field of this.apiHelperUrls) { %>
+  /** <$ field.model $> routes */
+  const val get<$ field.model $>AllUrl: String = "<$ field.get $>"
+  const val create<$ field.model $>Url: String = "<$ field.create $>"
+  const val update<$ field.model $>Url: String = "<$ field.update $>"
+  const val delete<$ field.model $>Url: String = "<$ field.delete $>"
+
+  <% }%>
+
+}

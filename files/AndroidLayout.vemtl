@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:layout_marginStart="16dp"
+  android:layout_marginTop="4dp"
+  android:layout_marginEnd="16dp"
+  android:layout_marginBottom="20dp"
+  android:background="@drawable/abc_bg_dialog_rounded"
+  android:scrollbarStyle="insideOverlay"
+  android:scrollbars="vertical"
+  app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="8dp"
+      android:orientation="vertical">
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/googlesans_bold"
+        android:text="<$ this.name $>"
+        android:textColor="@color/homeflow_title"
+        android:textSize="22sp" />
+
+      <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/homeflow_bg_input_two" />
+
+      <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/googlesans_bold"
+        android:text="Seleccione moneda"
+        android:textColor="@color/textSecundary"
+        android:textSize="16sp" />
+
+      <Spinner
+        android:id="@+id/newCreditCurrency"
+        android:layout_width="fill_parent"
+        android:layout_height="54dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/abc_input_rounded_login"
+        android:entries="@array/currencies"
+        android:fontFamily="@font/googlesans_bold"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:spinnerMode="dropdown"
+        android:imeOptions="actionNext"
+        android:textColor="?colorAccent" />-->
+
+      <% for (let field of this.crud.inputs) { %>
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:layout_marginBottom="4dp"
+          android:fontFamily="@font/googlesans_bold"
+          android:text="<$ field.label $>"
+          android:textColor="@color/textSecundary"
+          android:textSize="16sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/<$ field.name $>"
+          android:layout_width="match_parent"
+          android:layout_height="54dp"
+          android:layout_marginBottom="12dp"
+          android:background="@drawable/abc_input_rounded_login"
+          android:fontFamily="@font/googlesans_bold"
+          android:inputType="phone"
+          android:paddingStart="16dp"
+          android:paddingLeft="8dp"
+          android:paddingRight="8dp"
+          android:imeOptions="actionNext"
+          android:textColor="?colorAccent" />
+      <% } %>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/savedData"
+      style="@style/Widget.MaterialComponents.Button.Icon"
+      android:layout_width="match_parent"
+      android:layout_height="68dp"
+      android:layout_marginTop="4dp"
+      android:layout_marginBottom="20dp"
+      android:fontFamily="@font/googlesans_bold"
+      android:paddingLeft="24dp"
+      android:paddingRight="24dp"
+      android:text="Guardar <$ this.name $>"
+      android:textAllCaps="true"
+      android:textColor="@color/white"
+      app:backgroundTint="?colorAccent"
+      app:cornerRadius="8dp" />
+
+  </LinearLayout>
+</androidx.core.widget.NestedScrollView>
