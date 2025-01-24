@@ -10209,7 +10209,7 @@ const initDirectivesForSSR = () => {
 
 
 
-;// CONCATENATED MODULE: ../../../.nvm/versions/node/v20.17.0/lib/node_modules/@vue/cli-service/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../.nvm/versions/node/v20.17.0/lib/node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/Component.vue?vue&type=template&id=fbfa3c72
+;// CONCATENATED MODULE: ../../../.nvm/versions/node/v20.17.0/lib/node_modules/@vue/cli-service/node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../.nvm/versions/node/v20.17.0/lib/node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/Component.vue?vue&type=template&id=7fc4e5b1
 
 
 const _hoisted_1 = { class: "w-full" }
@@ -10218,7 +10218,7 @@ const _hoisted_3 = { class: "inline-flex items-center" }
 const _hoisted_4 = { class: "mt-4" }
 const _hoisted_5 = { class: "inline-flex items-center" }
 
-function Componentvue_type_template_id_fbfa3c72_render(_ctx, _cache, $props, $setup, $data, $options) {
+function Componentvue_type_template_id_7fc4e5b1_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (openBlock(), createElementBlock("div", _hoisted_1, [
     _cache[8] || (_cache[8] = createBaseVNode("label", { for: "package" }, [
       createTextVNode("Please insert in "),
@@ -10265,7 +10265,7 @@ function Componentvue_type_template_id_fbfa3c72_render(_ctx, _cache, $props, $se
     }, "Save")
   ]))
 }
-;// CONCATENATED MODULE: ./src/Component.vue?vue&type=template&id=fbfa3c72
+;// CONCATENATED MODULE: ./src/Component.vue?vue&type=template&id=7fc4e5b1
 
 ;// CONCATENATED MODULE: ../../../.nvm/versions/node/v20.17.0/lib/node_modules/@vue/cli-service/node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/Component.vue?vue&type=script&lang=js
 
@@ -10274,18 +10274,20 @@ function Componentvue_type_template_id_fbfa3c72_render(_ctx, _cache, $props, $se
     return {
       packageAndroid: '',
       roomDB: false,
-      pluginData: {},
+      pluginData: [],
+      vemtoProject: {},
     }
   },
 
   created () {
+    this.vemtoProject = window.vemtoApi.getProject()
     this.pluginData = window.vemtoApi.getPluginData()
     this.packageAndroid = this.pluginData.packageAndroid
     this.roomDB = this.pluginData.roomDB
   },
 
   methods: {
-    save () {
+    save() {
       window.vemtoApi.savePluginData({
         packageAndroid: this.packageAndroid,
         roomDB: this.roomDB
@@ -10304,7 +10306,7 @@ var exportHelper = __webpack_require__(193);
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,exportHelper/* default */.A)(Componentvue_type_script_lang_js, [['render',Componentvue_type_template_id_fbfa3c72_render]])
+const __exports__ = /*#__PURE__*/(0,exportHelper/* default */.A)(Componentvue_type_script_lang_js, [['render',Componentvue_type_template_id_7fc4e5b1_render]])
 
 /* harmony default export */ const Component = (__exports__);
 ;// CONCATENATED MODULE: ../../../.nvm/versions/node/v20.17.0/lib/node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
